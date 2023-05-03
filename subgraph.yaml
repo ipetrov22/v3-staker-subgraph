@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: NFTPositionsManager
-    network: rinkeby
+    network: mainnet
     source:
-      address: '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+      address: '0x3ccccb201c085988a416e9248077f3314f93ac65'
       abi: NFTPositionsManager
-      startBlock: 8528046
+      startBlock: 868781 # when first nft was created
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -38,12 +38,12 @@ dataSources:
           handler: handleTransfer
       file: ./src/nft-positions-manager-mapping.ts
   - kind: ethereum/contract
-    name: UniV3Staker
-    network: rinkeby
+    name: V3Staker
+    network: mainnet
     source:
-      address: '0xc462aB5e66067153Bf1B368493E4744C1cA4BeC9'
-      abi: UniV3Staker
-      startBlock: 8894474
+      address: '0x043647877a5234496e6fec0c12c5a3684b5c9a9e'
+      abi: V3Staker
+      startBlock: 755333
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -56,8 +56,8 @@ dataSources:
         - TokenStaked
         - TokenUnstaked
       abis:
-        - name: UniV3Staker
-          file: ./abis/UniV3Staker.json
+        - name: V3Staker
+          file: ./abis/V3Staker.json
       eventHandlers:
         - event: DepositTransferred(indexed uint256,indexed address,indexed address)
           handler: handleDepositTransferred
@@ -71,4 +71,4 @@ dataSources:
           handler: handleTokenStaked
         - event: TokenUnstaked(indexed uint256,indexed bytes32)
           handler: handleTokenUnstaked
-      file: ./src/uni-v3-staker-mapping.ts
+      file: ./src/v3-staker-mapping.ts
